@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>入围差距提醒</title>
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link href="biz/css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="biz/css/animate.min.css">
+    <script src="biz/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="biz/css/font-awesome.min.css">
+	<script src="biz/js/project/finalistGapReminder.js"></script>
+</head>
+
+<body>
+<div class="header">
+    <div class="header-left">
+        <i class="fa fa-angle-left"></i>
+    </div>
+    <div class="header-cont" id="title">入围差距提醒</div>
+    <div class="header-right"></div>
+
+</div>
+<div class="content">
+    <div class="shuru  animated wow slideInLeft" data-wow-delay="1s" style="padding: .1rem .3rem;">
+        <label for="" style="padding: 0; color: #ff9920; font-size: .24rem;">
+            由于O2O产品计入规则限制，所以本次计算不包含O2O产品。
+        </label>
+    </div>
+	<div id="input_content_div">
+		<div class="shuru margin-top-1 animated wow slideInLeft" data-wow-delay="1s">
+			<label for="">
+				<i class="fa fa-leaf"></i>
+				请输入本季度第一月的业绩
+			</label>
+			<div class="input-i">
+				<ul>
+					<li class="input-i-w">
+						<i class="fa fa-pencil"></i>
+						<input id="first_month_fyc" type="number" placeholder="请输入FYC" style="width: 45%;">
+						<i class="fa fa-pencil"></i>
+						<input id="first_month_piece" type="number" placeholder="请输入件数" style="width: 45%;">
+					</li>
+					<!--
+					<li class="input-i-w">
+						<i class="fa fa-pencil"></i>
+						<input id="first_month_piece" type="number" placeholder="请输入件数">
+					</li>-->
+				</ul>
+			</div>
+		</div>
+		<div class="shuru margin-top-1 animated wow slideInLeft" data-wow-delay="1s">
+			<label for="">
+				<i class="fa fa-leaf"></i>
+				请输入本季度第二个月的业绩
+			</label>
+			<div class="input-i">
+				<ul>
+					<li class="input-i-w">
+						<i class="fa fa-pencil"></i>
+						<input id="second_month_fyc" type="number" placeholder="请输入FYC" style="width: 45%;">
+						<i class="fa fa-pencil"></i>
+						<input id="second_month_piece" type="number" placeholder="请输入件数" style="width: 45%;">
+					</li>
+					<!--
+					<li class="input-i-w">
+						<i class="fa fa-pencil"></i>
+						<input id="second_month_piece" type="number" placeholder="请输入件数">
+					</li>-->
+				</ul>
+			</div>
+		</div>
+		 <div class="shuru margin-top-1 animated wow slideInLeft" data-wow-delay="1s">
+			<label for="">
+				<i class="fa fa-leaf"></i>
+				请输入本季度第三个月的业绩
+			</label>
+			<div class="input-i">
+				<ul>
+					<li class="input-i-w">
+						<i class="fa fa-pencil"></i>
+						<input id="third_month_fyc" type="number" placeholder="请输入FYC" style="width: 45%;">
+						<i class="fa fa-pencil"></i>
+						<input id="third_month_piece" type="number" placeholder="请输入件数" style="width: 45%;">
+					</li>
+					<!--
+					<li class="input-i-w">
+						<i class="fa fa-pencil"></i>
+						<input id="third_month_piece" type="number" placeholder="请输入件数">
+					</li>-->
+				</ul>
+			</div>
+		</div>
+		<div class="shuru_center bg-green margin-top-1 animated wow slideInLeft" data-wow-delay="1s" ">
+			<div class="input-i " id="result_btn">
+				<p class="but-box">查看结果</p>
+			</div>
+		</div>
+	</div>
+	<div id="out_content_div" style="display:none;">
+		<div id="calculation_result_div" class="shuru margin-top-1 animated wow slideInLeft" data-wow-delay="1.5s">
+			<label for="">
+				<i class="fa fa-leaf"></i>
+				输出结果
+			</label>
+			<div class="input-i">
+				<ul>
+					<li class="input-i-w border-none" id="calculation_result_li_1">
+						<!--<i class="fa fa-gift fa-color-red"></i>
+						恭喜您在本月可以获得<em>29</em>元的业绩津贴。-->
+					</li>
+					<li class="input-i-w border-none" id="calculation_result_li_2">
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="calculation_result_tables" class="margin-top-1 padding-onoe animated wow slideInLeft shuru" data-wow-delay="2s">
+			<label for="" style="font-size: .28rem;" id="result_tip_label">
+				<i class="fa fa-leaf"></i>
+				若您在本季度达标，下季度每月FYC会有如下津贴奖励哦！
+			</label>
+			<div class="input-i" style="padding: 0 0.2rem;">
+				<table id="marketing_table_detail" class="one-table line-table" style="display:none;">
+					<tr>
+						<th rowspan="2">FYC</th>
+						<th colspan="2">一级业务员</th>
+						<th colspan="2">二级业务员</th>
+					</tr>
+					<tr>
+						<th>系数</th>
+						<th >津贴</th>
+						<th >系数</th>
+						<th >津贴</th>
+					</tr>
+					<tr>
+						<td>1500</td>
+						<td>8%</td>
+						<td>120</td>
+						<td>5%</td>
+						<td>75</td>
+					</tr>
+					<tr>
+						<td>2500</td>
+						<td >15%</td>
+						<td>375</td>
+						<td>10%</td>
+						<td>250</td>
+					</tr>
+					<tr>
+						<td>3500</td>
+						<td >20%</td>
+						<td>700</td>
+						<td>15%</td>
+						<td>525</td>
+					</tr>
+					<tr>
+						<td>6000</td>
+						<td >22%</td>
+						<td>1320</td>
+						<td>20%</td>
+						<td>1200</td>
+					</tr>
+					<tr>
+						<td colspan="5">继续加油呀
+							<i class="fa fa-heart fa-color-red"></i>
+						</td>
+					</tr>
+				</table>
+				<table id="area_table_detail" class="one-table line-table" style="display:none;">
+					<tr>
+						<th rowspan="2">展业业绩</th>
+						<th colspan="2">A1收展员</th>
+						<th colspan="2">A2收展员</th>
+					</tr>
+					<tr>
+						<th>系数</th>
+						<th >津贴</th>
+						<th >系数</th>
+						<th >津贴</th>
+					</tr>
+					<tr>
+						<td>4000</td>
+						<td>2.8%</td>
+						<td>112</td>
+						<td>1.8%</td>
+						<td>72</td>
+					</tr>
+					<tr>
+						<td>7200</td>
+						<td >5.3%</td>
+						<td>382</td>
+						<td>3.5%</td>
+						<td>252</td>
+					</tr>
+					<tr>
+						<td>10000</td>
+						<td >7.0%</td>
+						<td>700</td>
+						<td>5.3%</td>
+						<td>530</td>
+					</tr>
+					<tr>
+						<td>17000</td>
+						<td >7.7%</td>
+						<td>1309</td>
+						<td>7.0%</td>
+						<td>1190</td>
+					</tr>
+					<tr>
+						<td colspan="5">继续加油呀
+							<i class="fa fa-heart fa-color-red"></i>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="shuru_center bg-green margin-top-1 animated wow slideInLeft" data-wow-delay="1s">
+				<div class="input-i " id="reset_content_btn">
+					<p class="but-box">重新计算</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="congratulations_div" style="position:absolute;top:20%;display:none;">
+		<label id="congratulations_input" style="padding: 0 0.2rem; color: #f700d0; font-size: .6rem;">重新计算
+        </label>
+		<img src="biz/img/gif/congratulations_gif.gif"  style="float:right;"/>
+	</div>
+</div>
+<!--弹框
+<div id="sign-kuang"  style="display:none ">
+    <div class="bg-sigh"></div>
+    <div class="sign-kuang-cont-two">
+        <ul>
+            <li class="tip-head">计算结果</li>
+            <li id="result_li_1"></li>
+            <li id="result_li_2"></li>
+            <li><img src="biz/img/flower-3.jpg"/></li>
+        </ul>
+    </div>
+</div>
+-->
+</body>
+</html>

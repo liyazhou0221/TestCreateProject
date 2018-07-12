@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>津贴计算</title>
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link href="biz/css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="biz/css/animate.min.css">
+    <script src="biz/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="biz/css/font-awesome.min.css">
+	<script src="biz/common/config.js"></script>
+	<script src="biz/js/project/allowanceCalculation.js"></script>
+	<script src="biz/js/project/goldCoins.js"></script>
+</head>
+
+<body>
+<div class="header">
+    <div class="header-left">
+        <i class="fa fa-angle-left"></i>
+    </div>
+    <div class="header-cont">津贴计算</div>
+    <div class="header-right"></div>
+
+</div>
+<div class="content">
+	<div id="input_content_div">
+		<div class="shuru animated wow slideInLeft" data-wow-delay=".5s">
+			<label for="">
+				<i class="fa fa-leaf"></i>
+				请选择上季度的入围级别
+			</label>
+			<div class="input-i">
+				<ul id="level_select_ul">
+					<li class="checkbox_li">
+						<label for="first">一级</label>
+						<input id="first" name="" type="checkbox" checked>
+					</li>
+					<li class="checkbox_li">
+						<label for="secend">二级</label>
+						<input id="secend" type="checkbox">
+					</li>
+					<li class="input-i-p" id="allowance_rule_li">
+						ps:算法规则（业绩津贴=当月FYC*<em id="allowance_rule_url" class="Performance-allowance">业绩津贴比例</em>）
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="shuru margin-top-1 animated wow slideInLeft" data-wow-delay="1s">
+			<label for="">
+				<i class="fa fa-leaf"></i>
+				请输入计算月的业绩
+			</label>
+			<div class="input-i">
+				<ul>
+					<li class="input-i-w">
+						<i class="fa fa-pencil"></i>
+						<input id="month_fyc_input" type="number" placeholder="请输入业绩值">
+					</li>
+
+				</ul>
+			</div>
+		</div>
+		<div id="stard_calculation" class="shuru_center bg-green margin-top-1 animated wow slideInLeft" data-wow-delay="1s">
+			<div class="input-i ">
+				<p class="but-box" >开始计算</p>
+			</div>
+		</div>
+	</div>
+	<div id="out_content_div" style="display:none;">
+		<div id="allowance_result_div" class="shuru margin-top-1 animated wow slideInLeft" data-wow-delay="1.5s" >
+			<label for="">
+				<i class="fa fa-leaf"></i>
+				输出结果
+			</label>
+			<div class="input-i">
+				<ul>
+					<li class="input-i-w border-none">
+						<i class="fa fa-gift fa-color-red"></i>
+						恭喜您在本月可以获得<em id="allowance_result">0</em>元的业绩津贴。
+					</li>
+
+				</ul>
+			</div>
+		</div>
+		<div id="disparity_result_div" class="shuru margin-top-1 animated wow slideInLeft" data-wow-delay="2s">
+			<label for="">
+				<i class="fa fa-leaf"></i>
+				再接再厉，距离各档次的差距如下：
+			</label>
+			<div class="input-i">
+				<!--营销 -->
+				<table id="marketing_table" class="one-table" style="display:none;">
+					<thead>
+				<tr>
+					<th>档次</th>
+					<th>最低标准</th>
+					<th>差距FYC</th>
+					<th>计算系数</th>
+					<th>业绩津贴</th>
+				</tr>
+				</thead>	
+				<tbody>
+				<tr>
+					<td>1500-2500</td>
+					<td>1500</td>
+					<td>0</td>
+					<td>5%</td>
+					<td>75</td>
+				</tr>
+				<tr>
+					<td>2500-3500</td>
+					<td>2500</td>
+					<td>0</td>
+					<td>10%</td>
+					<td>250</td>
+				</tr>
+				<tr>
+					<td>3500-6000</td>
+					<td>3500</td>
+					<td>0</td>
+					<td>15%</td>
+					<td>525</td>
+				</tr>
+				<tr>
+					<td>6000</td>
+					<td>0</td>
+					<td>6000</td>
+					<td>20%</td>
+					<td>1200</td>
+				</tr>
+				</tbody>
+				</table>
+				<!--区拓 -->
+				<table id="extra_table" class="one-table" style="display:none;" >
+					<thead>
+					<tr>
+					<th>档次</th>
+					<th>最低标准</th>
+					<th>差距业绩</th>
+					<th>计算系数</th>
+					<th>业绩津贴</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>4000-7200</td>
+						<td>4000</td>
+						<td>0</td>
+						<td>1.8%</td>
+						<td>72</td>
+					</tr>
+					<tr>
+						<td>7200-10000</td>
+						<td>7200</td>
+						<td>0</td>
+						<td>3.5%</td>
+						<td>21334</td>
+					</tr>
+					<tr>
+						<td>10000-17000</td>
+						<td>10000</td>
+						<td>0</td>
+						<td>5.3%</td>
+						<td>45322</td>
+					</tr>
+					<tr>
+						<td>17000</td>
+						<td>17000</td>
+						<td>0</td>
+						<td>7.0%</td>
+						<td>87666</td>
+					</tr>
+				</tbody>
+				</table>
+			</div>
+		</div>
+		<div id="re_stard_calculation" class="shuru_center bg-green margin-top-1 animated wow slideInLeft" data-wow-delay="1s" >
+			<div class="input-i ">
+				<p class="but-box" >重新开始</p>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
